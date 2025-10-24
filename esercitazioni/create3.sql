@@ -1,0 +1,25 @@
+CREATE SCHEMA prodotti;
+
+CREATE TABLE prodotti.MAGAZZINO (
+	codM char(3) PRIMARY KEY,
+	indirizzo VARCHAR(32) NOT NULL,
+	citta VARCHAR(16) NOT NULL
+);
+
+CREATE TABLE prodotti.PRODOTTO (
+	codP CHAR(3) PRIMARY KEY,
+	nome VARCHAR(16) NOT NULL,
+	categoria VARCHAR(16) NOT NULL
+);
+
+CREATE TABLE prodotti.INVENTARIO (
+	magazzino CHAR(3) REFERENCES prodotti.MAGAZZINO(codM)
+		ON UPDATE CASCADE 
+		ON DELETE CASCADE,
+	prodotto CHAR(3) REFERENCES prodotti.PRODOTTO(codP)
+		ON UPDATE CASCADE 
+		ON DELETE CASCADE,
+	quantita INTEGER CHECK (quantita > 0) NOT NULL,
+	prezzo DECIMAL CHECK (prezzo > 0.00) NOT NULL,
+	PRIMARY KEY (magazzino, prodotto)
+);
