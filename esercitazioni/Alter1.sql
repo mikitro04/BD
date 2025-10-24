@@ -1,7 +1,7 @@
 SET search_path TO segreteria;
 
 ALTER TABLE esami
-ADD CFOREIGN KEY (studente) REFERENCES studenti(matricola)
+ADD FOREIGN KEY (studente) REFERENCES studenti(matricola)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
