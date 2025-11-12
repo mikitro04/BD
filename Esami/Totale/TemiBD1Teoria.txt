@@ -1,0 +1,33 @@
+
+2021-01-21 11:35:22
+
+1) Possono esistere attributi di una tabella che non appartengono a nessuna superchiave? Motivare la risposta.
+All'interno di una relazione possiamo avere una superchiave che comprende tutti gli attributi della tabella, pertanto ciascun attributo della relazione appartiene ad almeno una superchiave
+
+2) Una superchiave non minimale può essere sottinsieme di una chiave primaria? Motivare la risposta.
+No, solitamente la chiave primaria è quella chiave dotata del numero minimo di attributi necessario ad identificare le tuple di una determinata relazione, le superchiavi non minimali invece possono contenere molti 
+più atributi di quelli effetivamente necessari.
+
+3) Cosa si intende per livello fisico, logico, ed esterno di un DBMS?
+Il livello esterno è un sottoinsieme del livello logico, questo viene utilizzato per limitare i dati visibili ad un utente finale o ad una applicazione e deve essere indipendente dal livello logico
+Il livello logico contiene tutte le relazioni del nostro DBMS, noi ci interfacciamo con questo mediante il linguaggio sql per ottenere, modificare o aggiungere i dati all'interno del nostro DBMS
+Il livello fisico invece rappresenta i dati all'interno della memoria primaria e secondaria, 
+questo deve essere indipendente dal livello logico (accederò al livello logico a prescindere da come sono memorizzati i dati).
+
+4) Quante chiavi diverse può avere una relazione con 2 attributi? Motivare la risposta.
+Supponiamo di avere una relazione R(a,b)
+In questo caso posso avere 3 chiavi distinte: una superchiave formata da <a,b>, una chiave minimale rappresenta da a e una chiave minimale rappresenta da b.
+
+5) Quali sono i vantaggi e gli svantaggi di un DBMS che supporta le proprietà ACID rispetto ad uno che non le supporta?
+ACID=Atomicità Consistenza Isolamento e Durabilità
+Un DBMS che supporta le proprietà ACID ci offre la possibilità di eseguire delle transazioni, ovvero un insieme di operazioni che per essere considerato valido deve essere eseguito dalla prima all'ultima operazione,
+che rispettano i vincoli di cardinalità. Questi dbms ci permettono di svolgere delle transazioni concorrenti la cui esecuzione porta a delle modifiche persistenti nel dbms.
+L'implementazione di queste proprietà però ha lo svantaggio di essere più dispendiso in termini di tempo, pertanto non sono ideali per la memorizzazione di big-data.
+
+6) Per quale motivo ogni relazione che soddisfa la BCNF (Boyce-Codd Normal Form) soddisfa anche la 3NF (Third Normal Form)?
+Affinchè una relazione soddisfi la BCNF, le sue dipendenze funzionali devono essere nella forma X->Y dove X è una (super)chiave di R.
+La terza forma normale richiede che le dipendenze funzionali rispettino la condizione della BCNF, ma anche la seguente : dipendenze funzionali dove gli atributi presenti in Y appartengono anche a qualche chiave della relazione.
+
+7) Cosa si intende per formato dei record Fisso e Auto-descrittivo per la scrittura dei record su disco? Quali sono i vantaggi e gli svantaggi di ognuno dei due?
+Un formato dei record fisso richiede che all'interno della pagina ci sia una descrizione della struttura del record: nome,tipo e dimensione.
+Un formato auto-descrittivo invece sfrutta dei record così  formati: nome/codice, tipo, dimensione, valore 

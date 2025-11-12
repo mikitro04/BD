@@ -1,0 +1,31 @@
+insert into biblioteca.utente values(1,'Marta','Fadda','via Sardegna 15','3451198381','docente');
+insert into biblioteca.utente values(2,'Marco','Cossu','via Roma 2','3471291811', 'docente');
+insert into biblioteca.utente values(3,'Alice','Addis','via Piave 187','3421256182', 'studente');
+insert into biblioteca.utente values(4,'Filippo','Vacca','via Carmine 33','3426632381','studente');
+
+insert into biblioteca.libro values(1,'Divina commedia','Dante Alighieri','mondadori','9798591969110');
+insert into biblioteca.libro values(2,'Il Signore degli Anelli','Tolkien','bompiani', '9788845269707');
+insert into biblioteca.libro values(3,'Cime Tempestose','Emily Bronte','dalai','9788884905710');
+insert into biblioteca.libro values(4,'Piccole Donne','Louisa Alcott', 'piemme','9788856617337');
+insert into biblioteca.libro values(5,'I promessi sposi','Alessandro Manzoni','mondadori','9788824729420');
+insert into biblioteca.libro values(6,'Odissea','Omero', 'garzanti','9788811360544');
+insert into biblioteca.libro values(7, 'Anna Karenina','Leo Tolstoy','dalai','9781853262715');
+insert into biblioteca.libro values(8, 'Emma','Jane Austen','mondadori','9788804510222');
+insert into biblioteca.libro values(9, 'Siddharta', 'Hermann Hesse', 'adelphi', '9788845901843');
+insert into biblioteca.libro values(10, 'Il Ritratto di Dorian Gray', 'Oscar Wilde', 'mondadori', '9788804516651');
+insert into biblioteca.libro values(11, 'Amleto','William Shakespeare', 'mondadori', '9788804645047');
+insert into biblioteca.libro values(12, 'Il processo', 'Franz Kafka','feltrinelli', '9788807900969');
+
+insert into biblioteca.prestito values(1,2,'2009-01-08','30');
+insert into biblioteca.prestito values(1,3,'2009-03-18','40');
+insert into biblioteca.prestito values(3,3,'2005-04-11','35');
+insert into biblioteca.prestito values(3,2,'2010-01-10','50');
+insert into biblioteca.prestito values(5,2,'2012-09-02','60');
+insert into biblioteca.prestito values(1,1,'2014-01-21','30');
+insert into biblioteca.prestito values(5,1,'2009-03-08','180');
+insert into biblioteca.prestito values(8,1,'2015-11-18','40');
+insert into biblioteca.prestito values(9,3,'2009-07-24','30');
+insert into biblioteca.prestito values(3,1,'2007-08-01','60');
+insert into biblioteca.prestito values(11,2,'2016-01-18','180');
+insert into biblioteca.prestito values(11,3,'2011-05-28','180');
+insert into biblioteca.prestito values(4,1,'2006-01-30','60');

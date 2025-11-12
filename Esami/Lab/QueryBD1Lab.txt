@@ -1,0 +1,32 @@
+
+2021-01-21 16:12:54
+
+1) Selezionare nome, colore e carburante delle automobili con marca che inizi per "f" prenotate da guidatori con età superiore a 35 anni, ordinate per nome decrescente e rimuovendo eventuali duplicati.
+SELECT DISTINCT autonoleggio.automobile.nome,colore,carburante 
+FROM autonoleggio.automobile
+JOIN autonoleggio.prenotazione ON autonoleggio.prenotazione.automobile=autonoleggio.automobile.codiceA
+JOIN autonoleggio.guidatore ON autonoleggio.prenotazione.guidatore=autonoleggio.guidatore.codiceG
+WHERE marca LIKE 'f%' and eta>35 
+ORDER BY autonoleggio.automobile.nome DESC ;
+2) Selezionare nome e marca delle coppie di automobili prenotate dallo stesso guidatore, rimuovendo le coppie ripetute.
+
+3) Selezionare per ogni auto: il codice e il colore, e il numero di guidatori distinti, la durata media e il costo totale delle prenotazioni ad essa associata, incluse le auto che non sono mai state prenotate.
+SELECT codiceA,colore,COUNT (DISTINCT autonoleggio.prenotazione.guidatore ),ROUND(AVG(dataR-dataP)),SUM(costo) 
+FROM autonoleggio.automobile
+LEFT JOIN autonoleggio.prenotazione ON autonoleggio.prenotazione.automobile=autonoleggio.automobile.codiceA
+GROUP BY codiceA;
+4) Selezionare, per ogni guidatore che ha prenotato auto di almeno tre colori differenti: il codice e il nome del guidatore, il numero di auto distinte prenotate e il costo totale di tali prenotazioni.
+SELECT codiceG, autonoleggio.guidatore.nome, COUNT(DISTINCT autonoleggio.prenotazione.automobile), SUM(costo)
+FROM autonoleggio.guidatore
+JOIN autonoleggio.prenotazione ON autonoleggio.prenotazione.guidatore=autonoleggio.guidatore.codiceG
+JOIN autonoleggio.automobile ON autonoleggio.prenotazione.automobile=autonoleggio.automobile.codiceA
+GROUP BY codiceG 
+HAVING COUNT(DISTINCT colore)>3;
+5) All'interno dello schema 'autonoleggio', creare una vista 'guidatori_affidabili' che contenga i dati dei guidatori la cui affidabilità sia superiore al 70% dell'affidabilità massima e che abbiano effettuato prenotazioni nel 2016, riportando per ciascuno di essi il numero di auto prenotate e la durata media delle prenotazioni ad essi correlate. Utilizzando tale vista, selezionare per ogni guidatore affidabile, il codice dell'automobile più cara che ha prenotato.
+CREATE VIEW guidatori_affidabili AS(
+SELECT distinct codiceG, nome, cognome, eta, affidabilita, COUNT (autonoleggio.prenotazione.automobile) as numAuto, ROUND(AVG(dataR-dataP)) as durataMedia
+FROM autonoleggio.guidatore
+JOIN autonoleggio.prenotazione ON autonoleggio.prenotazione.guidatore=autonoleggio.guidatore.codiceG
+GROUP BY codiceG
+HAVING affidabilita > (select MAX(affidabilita)*0.7 FROM autonoleggio.guidatore ) 
+and COUNT(dataP between '2016-01-01' and '2016-12-31')>=1);

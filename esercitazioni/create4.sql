@@ -1,0 +1,28 @@
+CREATE TABLE PROGETTO (
+    codP CHAR(3) PRIMARY KEY,
+    nome VARCHAR(16),
+    anno INTEGER,
+    budget INTEGER NOT NULL CHECK(budget > 10000)
+)
+
+CREATE TABLE DIPENDENTE (
+    codD CHAR(3) PRIMARY KEY,
+    cognome VARCHAR(16) NOT NULL,
+    nome VARCHAR(16) NOT NULL,
+    citta VARCHAR(16)
+)
+
+CREATE TABLE PARTECIPA (
+    progetto CHAR(3),
+    dipendente CHAR(3),
+    mesi INTEGER,
+    ruolo VARCHAR(16),
+    PRIMARY KEY(progetto, dipendente),
+    FOREIGN KEY(progetto) REFERENCES PROGETTO(codP)
+        ON UPDATE RESTRICT
+        ON DELETE CASCADE,
+    FOREIGN KEY(dipendente) REFERENCES DIPENDENTE(codD)
+        ON UPDATE RESTRICT
+        ON DELETE CASCADE,
+    CHECK(mesi BETWEEN 3 AND 24)
+)
