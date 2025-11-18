@@ -3,8 +3,9 @@ SELECT MAX(budget), MIN(budget), AVG(budget) FROM PROGETTO;
 
 --b) Selezionare il nome del progetto col budget più elevato.
 SELECT nome FROM PROGETTO
-ORDER BY budget DESC
-LIMIT 1;
+WHERE budget >= ALL (
+    SELECT budget FROM PROGETTO
+);
 
 --c) Selezionare il nome dei progetti il cui budget è superiore alla media.
 SELECT nome FROM PROGETTO
@@ -38,6 +39,7 @@ AND NOT EXISTS (
     WHERE pr1.anno <> 2005 
     AND pa1.dipendente = d.codD     --mancava questa riga e mettere px1 anziche' solo px, c'ero molto vicino
 );          --TIPS: mettere nelle subquery sempre nomi univoci rispetto alla query esterna
+
 
 --g) Per ogni dipendente (che ha preso parte ad almeno un progetto), selezionare il codice del progetto in cui egli ha lavorato per il maggior numero di mesi.
 SELECT DISTINCT ON (dipendente) pa.progetto FROM PARTECIPA AS pa
