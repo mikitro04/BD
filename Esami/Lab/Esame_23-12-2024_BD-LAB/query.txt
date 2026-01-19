@@ -1,0 +1,59 @@
+-- QUERY A
+select distinct nomeProdotto, tipo, dataInizio
+from costruzione
+join macchinario on codiceMacchinario = macchinario
+join prodotto on codiceProdotto = prodotto
+where dataInizio < '2024-02-01' and quantitaProdotta > 500
+order by nomeProdotto;
+
+-- QUERY B
+select nomeMacchinario
+from costruzione
+join macchinario on codiceMacchinario = macchinario
+join prodotto on codiceProdotto = prodotto
+where categoria like 'Elettronico'
+group by nomeMacchinario
+having count(*) >= 1
+except
+select nomeMacchinario
+from costruzione
+join macchinario on codiceMacchinario = macchinario
+join prodotto on codiceProdotto = prodotto
+where categoria like 'Meccanico'
+group by nomeMacchinario
+having count(*) >= 1;
+
+-- QUERY C
+select codiceMacchinario, nomeMacchinario, count(prodotto) as totaleProdotti, avg(quantitaProdotta) as mediaProduzioni, max(quantitaProdotta) as massimaProduzione, min(quantitaProdotta) as minimaProduzione
+from costruzione
+left join macchinario on codiceMacchinario = macchinario
+group by codiceMacchinario;
+
+-- QUERY D
+select macchinario.*, prodotto, dataInizio
+from costruzione C
+join macchinario on codiceMacchinario = macchinario
+where quantitaProdotta = (select max(quantitaProdotta) from costruzione where macchinario = C.macchinario)
+and macchinario in(
+select macchinario
+from costruzione
+group by macchinario
+having count(distinct prodotto) >= 4
+);
+
+-- QUERY E
+create or replace view macchinari_efficienti as
+select distinct M.*
+from macchinario M
+join costruzione on codiceMacchinario = macchinario
+group by codiceMacchinario
+having avg(quantitaProdotta) > (
+select avg(quantitaProdotta)
+from costruzione
+);
+
+select nomeMacchinario, codiceMacchinario, count(distinct prodotto), sum(quantitaProdotta)
+from macchinari_efficienti M
+join costruzione on codiceMacchinario = macchinario
+join prodotto on codiceProdotto = prodotto
+group by nomeMacchinario, codiceMacchinario;

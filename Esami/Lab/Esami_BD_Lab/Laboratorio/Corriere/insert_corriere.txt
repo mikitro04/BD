@@ -1,0 +1,32 @@
+insert into corriere.utente values(1,'Marta','Fadda','via Sardegna 15, Cagliari','3451198381');
+insert into corriere.utente values(2,'Marco','Cossu','via Roma 2, Cagliari','3471291811');
+insert into corriere.utente values(3,'Alice','Addis','via Piave 187, Sassari','3421256182');
+insert into corriere.utente values(4,'Filippo','Vacca','via Carmine 33, Oristano','3426632381');
+
+insert into corriere.pacco values(1,'brt',1,15);
+insert into corriere.pacco values(2,'gls',2,53);
+insert into corriere.pacco values(3,'brt',2,28);
+insert into corriere.pacco values(4,'dhl',1,38);
+insert into corriere.pacco values(5,'brt',3,24);
+insert into corriere.pacco values(6,'dhl',4,19);
+insert into corriere.pacco values(7,'ups',3,86);
+insert into corriere.pacco values(8,'ups',4,225);
+insert into corriere.pacco values(9,'ups',2,210);
+insert into corriere.pacco values(10,'ups',4,106);
+insert into corriere.pacco values(11,'dhl',1,35);
+insert into corriere.pacco values(12,'dhl',2,58);
+insert into corriere.pacco values(13,'gls',3,49);
+
+insert into corriere.consegna values(1,2,'1999-01-08','fragile');
+insert into corriere.consegna values(2,3,'2009-03-18','fragile');
+insert into corriere.consegna values(3,3,'2005-04-11','fragile');
+insert into corriere.consegna values(4,2,'2010-01-10','fragile');
+insert into corriere.consegna values(5,2,'2012-09-02','economico');
+insert into corriere.consegna values(6,1,'2014-01-21','economico');
+insert into corriere.consegna values(7,1,'2009-03-08','prioritario');
+insert into corriere.consegna values(8,1,'2015-11-18','fragile');
+insert into corriere.consegna values(9,1,'2009-07-24','fragile');
+insert into corriere.consegna values(10,1,'2007-08-01','fragile');
+insert into corriere.consegna values(11,2,'2016-01-18','fragile');
+insert into corriere.consegna values(12,3,'2011-05-28','fragile');
+insert into corriere.consegna values(13,1,'2006-01-30','prioritario');

@@ -1,0 +1,30 @@
+insert into aeroporto.aereo values ('A30', 'Airbus A320', 80);
+insert into aeroporto.aereo values ('A31', 'Airbus A330', 75);
+insert into aeroporto.aereo values ('A32', 'Airbus A320', 55);
+insert into aeroporto.aereo values ('B14', 'Boeing 737', 98);
+insert into aeroporto.aereo values ('A33', 'Airbus A320', 59);
+insert into aeroporto.aereo values ('B15', 'Boeing 737', 85);
+insert into aeroporto.aereo values ('B16', 'Boeing 757', 95);
+
+insert into aeroporto.volo values ('Z09T9','A30','2019-11-18','05:30:00','07:30:00','Roma','Milano',65);
+insert into aeroporto.volo values ('Z05A6','B14','2019-11-18','05:30:00','07:30:00','Cagliari','Venezia',70);
+insert into aeroporto.volo values ('Z00E5','B15','2010-03-18','05:22:00','08:30:00','Milano','Cagliari',42);
+insert into aeroporto.volo values ('Z12E4','A31','2018-05-16','04:00:00','07:15:00','Roma','Cagliari',68);
+insert into aeroporto.volo values ('Z98A5','A31','2001-10-19','04:00:00','06:10:00','Catania','Catania',73);
+insert into aeroporto.volo values ('Z87Y0','A30','2003-12-31','08:25:00','11:00:00','Venezia','Catania',80);
+insert into aeroporto.volo values ('Z94W1','B16','2003-02-09','08:25:00','11:30:00','Cagliari','Milano',42);
+insert into aeroporto.volo values ('Z55Q6','B16','2019-12-30','05:30:00','07:50:00','Cagliari','Milano',65);
+insert into aeroporto.volo values ('Z87U1','A32','2000-09-10','09:15:00','12:30:00','Milano','Roma',55);
+insert into aeroporto.volo values ('Z56O9','B16','2005-08-13','10:10:00','13:45:00','Roma','Venezia',30);
+insert into aeroporto.volo values ('Z97Y8','A30','2008-08-20','11:10:00','13:10:00','Milano','Catania',70);
+
+insert into aeroporto.passeggero values (1,'Giulia','Loi','2019-03-18','Z09T9');
+insert into aeroporto.passeggero values (2,'Franco','Manca','2000-05-04','Z56O9');
+insert into aeroporto.passeggero values (3,'Franco','Mossa','1991-11-12','Z09T9');
+insert into aeroporto.passeggero values (4,'Giacomo','Corrias','2019-12-25','Z55Q6');
+insert into aeroporto.passeggero values (5,'Federica','Gerina','1985-04-11','Z09T9');
+insert into aeroporto.passeggero values (6,'Francesca','Moi','1985-04-11','Z12E4');
+insert into aeroporto.passeggero values (7,'Valentino','Cau','1992-09-08','Z00E5');
+insert into aeroporto.passeggero values (8,'Luca','Cocco','2000-09-25','Z05A6');
+insert into aeroporto.passeggero values (9,'Franco','Manca','2000-05-04','Z12E4');
+insert into aeroporto.passeggero values (10,'Francesca','Moi','1985-04-11','Z87Y0');

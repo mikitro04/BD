@@ -1,0 +1,32 @@
+-- SCHEMA
+-- non c'è bisogno di crearlo dal momento che public è lo schema di default
+
+-- TABELLA PRODOTTO
+create table prodotto (
+codiceProdotto serial check(codiceProdotto > 0) primary key,
+nomeProdotto varchar(100) not null unique,
+categoria varchar(50) check(categoria in('Elettronico', 'Meccanico', 'Chimico')) not null,
+prezzoUnitario numeric(12, 2) check(prezzoUnitario > 0) not null
+);
+
+-- TABELLA MACCHINARIO
+create table macchinario (
+codiceMacchinario serial primary key check(codiceMacchinario > 0),
+nomeMacchinario varchar(100) not null,
+tipo varchar(50) not null,
+produttore varchar(100) not null
+);
+
+-- TABELLA COSTRUZIONE
+create table costruzione (
+prodotto serial references prodotto
+on delete cascade
+on update cascade,
+macchinario serial references macchinario
+on delete restrict
+on update cascade,
+dataInizio date not null,
+durata smallint check(durata > 0) not null,
+quantitaProdotta integer check(quantitaProdotta > 0) not null,
+primary key(prodotto, macchinario)
+);
